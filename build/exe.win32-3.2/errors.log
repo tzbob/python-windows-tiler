@@ -1,0 +1,28 @@
+2012-01-27 02:53:24,724 - WARNING - Can't find icon file - using default.
+2012-01-27 02:53:24,734 - INFO - START controller
+2012-01-27 02:55:56,914 - WARNING - Can't find icon file - using default.
+2012-01-27 02:55:56,921 - INFO - START controller
+2012-01-27 02:55:58,410 - WARNING - Can't find icon file - using default.
+2012-01-27 02:55:58,831 - WARNING - Can't find icon file - using default.
+2012-01-27 02:55:59,086 - WARNING - Can't find icon file - using default.
+2012-01-27 02:55:59,953 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:00,326 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:00,457 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:00,585 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:01,325 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:03,767 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:04,339 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:04,690 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:06,111 - WARNING - Can't find icon file - using default.
+2012-01-27 02:56:16,864 - ERROR - Error while decorating window
+Traceback (most recent call last):
+  File "E:\Python\PWT\src\pwt\window.py", line 308, in update
+    ,SWP_FRAMECHANGED + SWP_NOMOVE + SWP_NOSIZE + SWP_NOZORDER
+pywintypes.error: (1400, 'SetWindowPos', 'Invalid window handle.')
+2012-01-27 02:57:57,779 - INFO - START controller
+2012-01-27 02:58:10,236 - INFO - START controller
+2012-01-27 02:58:35,240 - ERROR - Error while decorating window
+Traceback (most recent call last):
+  File "E:\Python\PWT\src\pwt\window.py", line 308, in update
+    ,SWP_FRAMECHANGED + SWP_NOMOVE + SWP_NOSIZE + SWP_NOZORDER
+pywintypes.error: (1400, 'SetWindowPos', 'Invalid window handle.')
