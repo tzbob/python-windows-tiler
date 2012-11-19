@@ -24,6 +24,7 @@ from win32con import WS_CAPTION
 from win32con import WS_EX_APPWINDOW 
 from win32con import WS_EX_CONTROLPARENT
 from win32con import WS_EX_TOOLWINDOW
+from win32con import WS_EX_WINDOWEDGE
 
 class Window(object):
 
@@ -54,16 +55,22 @@ class Window(object):
 
         if win32gui.IsWindowVisible(self.hWindow):
 
+            value = win32gui.GetWindowLong(self.hWindow, GWL_EXSTYLE)
+            owner = win32gui.GetWindow(self.hWindow, GW_OWNER)
+            
             if not win32gui.GetParent(self.hWindow):
-
-                value = win32gui.GetWindowLong(self.hWindow, GWL_EXSTYLE)
-                owner = win32gui.GetWindow(self.hWindow, GW_OWNER)
 
                 if (not owner and not value & WS_EX_TOOLWINDOW) or value & WS_EX_APPWINDOW:
 
                     if not self.floating:
 
                         return True
+
+            else:
+
+                if value & WS_EX_WINDOWEDGE:
+
+                    return True
 
         return False
 
@@ -421,7 +428,15 @@ class Window(object):
         Returns the window's classname
         """
 
-        return win32gui.GetClassName(self.hWindow)
+        try:
+
+            return win32gui.GetClassName(self.hWindow)
+
+        except win32gui.error:
+
+            logging.exception("Error while getting window's class name")
+
+            return None
 
 
     @property

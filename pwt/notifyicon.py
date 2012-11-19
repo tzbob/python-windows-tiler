@@ -79,7 +79,14 @@ class NotifyIcon(Window):
                 self.hicon,
                 self.hoverText)
 
-        win32gui.Shell_NotifyIcon(message, self.notify_id)
+        try:
+
+            win32gui.Shell_NotifyIcon(message, self.notify_id)
+
+        except win32gui.error:
+
+            logging.exception("Error while drawing the icon")
+        
 
     def destroy(self):
 
