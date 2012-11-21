@@ -1,6 +1,8 @@
 #@PydevCodeAnalysisIgnore
 import logging
 import win32api
+import time
+import pywintypes
 
 #pwt specific imports
 from pwt.tiler import Tiler
@@ -193,6 +195,34 @@ class Monitor(object):
 
     @staticmethod
     def current_monitor_from_list(monitors):
+        """
+        win32api.GetCursorPos() might fail repeatedly after wakeup from
+        hibernate due to the underlying handle not (yet) being valid.
+        Keep retrying for some time.
+        """
 
-        return Monitor.monitor_from_point_in_list(monitors,
-                win32api.GetCursorPos())
+        sleep_seconds = 2
+        maximum_sleep = 60
+        total_sleep = 0
+
+
+        while total_sleep <= maximum_sleep:
+
+            try:
+                
+                result = Monitor.monitor_from_point_in_list(monitors,
+                        win32api.GetCursorPos())
+
+                logging.debug("current_monitor_from_list Total sleep time: %s)",
+                        str(total_sleep))
+
+                return result
+
+            except pywintypes.error:
+
+                time.sleep(sleep_seconds)
+
+                total_sleep = total_sleep + sleep_seconds
+
+
+        return None
