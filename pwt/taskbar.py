@@ -43,7 +43,10 @@ class Taskbar(object):
         """
 
         self.taskbar.show()
-        self.startbutton.show()
+
+        if self.startbutton is not None:
+
+            self.startbutton.show()
 
         self.autohide_off()
 
